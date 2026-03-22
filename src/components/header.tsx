@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { AppBar, Toolbar, Box, IconButton, Drawer, List, ListItemButton, ListItemText } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import logoWideImg from '../assets/img/ロゴ横長.png';
 
 const RED = '#E84420';
 
@@ -32,47 +33,33 @@ const Header = () => {
 
   return (
     <AppBar
-      position="fixed"
-      elevation={0}
+      position="fixed" elevation={0}
       sx={{
         backgroundColor: scrolled ? 'rgba(26,26,26,0.95)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(10px)' : 'none',
+        backdropFilter: scrolled ? 'blur(12px)' : 'none',
         transition: 'all 0.4s ease',
-        borderBottom: scrolled ? `1px solid rgba(255,255,255,0.05)` : 'none',
+        borderBottom: scrolled ? '1px solid rgba(255,255,255,0.04)' : 'none',
       }}
     >
       <Toolbar sx={{ maxWidth: 1200, width: '100%', mx: 'auto', px: { xs: 2, md: 4 }, minHeight: { xs: 56, md: 64 } }}>
-        <Box sx={{ flexGrow: 1, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 1.5 }} onClick={() => scrollTo('#hero')}>
-          {/* SEI logo placeholder */}
-          <Box sx={{
-            width: 32, height: 32, backgroundColor: RED, display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: '0.6rem', fontWeight: 900, color: '#fff', fontFamily: '"Helvetica Neue", sans-serif', letterSpacing: '0.05em',
-          }}>
-            SEI
-          </Box>
-          <Box component="span" sx={{
-            fontSize: scrolled ? '0.85rem' : '0.95rem', fontWeight: 700, color: '#fff',
-            letterSpacing: '0.15em', transition: 'font-size 0.3s ease', whiteSpace: 'nowrap',
-          }}>
-            北誠建設株式会社
-          </Box>
+        <Box sx={{ flexGrow: 1, cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => scrollTo('#hero')}>
+          <Box component="img" src={logoWideImg} alt="北誠建設株式会社"
+            sx={{ height: scrolled ? 22 : 26, transition: 'height 0.3s ease', filter: 'brightness(1.1)' }} />
         </Box>
 
         {/* Desktop nav */}
         <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 0.5 }}>
           {navItems.map((item) => (
-            <Box
-              key={item.href}
-              component="a"
+            <Box key={item.href} component="a"
               onClick={(e: React.MouseEvent) => { e.preventDefault(); scrollTo(item.href); }}
               href={item.href}
               sx={{
-                px: 1.5, py: 1, fontSize: '0.8rem', color: 'rgba(255,255,255,0.8)', textDecoration: 'none',
-                letterSpacing: '0.05em', cursor: 'pointer', position: 'relative', transition: 'color 0.3s ease',
+                px: 1.5, py: 1, fontSize: '0.75rem', color: 'rgba(255,255,255,0.7)', textDecoration: 'none',
+                letterSpacing: '0.08em', cursor: 'pointer', position: 'relative', transition: 'color 0.3s ease',
                 '&:hover': { color: '#fff' },
                 '&::after': {
                   content: '""', position: 'absolute', bottom: 6, left: '50%', transform: 'translateX(-50%) scaleX(0)',
-                  width: '60%', height: 2, backgroundColor: RED, transition: 'transform 0.3s ease', transformOrigin: 'center',
+                  width: '50%', height: 1, background: `linear-gradient(90deg, ${RED}, #4da6d9)`, transition: 'transform 0.3s ease', transformOrigin: 'center',
                 },
                 '&:hover::after': { transform: 'translateX(-50%) scaleX(1)' },
               }}
@@ -82,20 +69,15 @@ const Header = () => {
           ))}
         </Box>
 
-        {/* Mobile */}
         <IconButton sx={{ display: { xs: 'flex', md: 'none' }, color: '#fff' }} onClick={() => setDrawerOpen(true)}>
           <MenuIcon />
         </IconButton>
       </Toolbar>
 
-      <Drawer
-        anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)}
-        PaperProps={{ sx: { width: 280, backgroundColor: '#1a1a1a', pt: 2 } }}
-      >
+      <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)}
+        PaperProps={{ sx: { width: 280, backgroundColor: '#1a1a1a', pt: 2 } }}>
         <Box sx={{ display: 'flex', justifyContent: 'flex-end', px: 2 }}>
-          <IconButton onClick={() => setDrawerOpen(false)} sx={{ color: '#fff' }}>
-            <CloseIcon />
-          </IconButton>
+          <IconButton onClick={() => setDrawerOpen(false)} sx={{ color: '#fff' }}><CloseIcon /></IconButton>
         </Box>
         <List>
           {navItems.map((item) => (
