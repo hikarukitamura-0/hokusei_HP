@@ -1,13 +1,8 @@
-.overlay {
+.wrapper {
   position: fixed;
   inset: 0;
-  background-color: #1a1a1a;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   z-index: 10000;
   overflow: hidden;
-  will-change: transform;
 }
 
 .flash {
@@ -15,104 +10,93 @@
   inset: 0;
   background: #fff;
   opacity: 0;
-  z-index: 10;
+  z-index: 20;
   pointer-events: none;
 }
 
-/* Diagonal slashes */
-.slash {
+/* Diagonal layers covering screen */
+.layer {
+  position: absolute;
+  width: 140%;
+  height: 140%;
+  transform: rotate(-20deg);
+  will-change: transform;
+  z-index: 1;
+}
+.layerDark {
+  top: -30%;
+  left: -20%;
+  background-color: #1a1a1a;
+  z-index: 3;
+}
+.layerRed {
+  top: -10%;
+  left: -20%;
+  background-color: #E84420;
+  z-index: 2;
+}
+.layerSky {
+  top: 10%;
+  left: -20%;
+  background-color: #4da6d9;
+  z-index: 1;
+}
+
+/* Accent lines */
+.accentLine {
   position: absolute;
   width: 120%;
-  height: 60px;
-  background: #E84420;
-  opacity: 0.7;
+  transform: rotate(-20deg);
   will-change: transform;
+  z-index: 8;
 }
-.slash1 { top: 20%; }
-.slash2 { top: 50%; height: 40px; opacity: 0.4; }
-.slash3 { top: 75%; height: 25px; opacity: 0.3; }
+.accent1 {
+  top: 30%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.5);
+}
+.accent2 {
+  top: 55%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+}
+.accent3 {
+  top: 72%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.2);
+}
 
-/* Counter */
-.counterWrapper {
+/* Text */
+.textCenter {
   position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  text-align: center;
 }
 
-.counter {
-  font-size: clamp(4rem, 10vw, 7rem);
-  font-weight: 100;
+.textMask {
+  clip-path: polygon(0 0, 0 0, -20% 100%, 0 100%);
+  will-change: clip-path;
+}
+
+.titleBig {
+  font-size: clamp(3.5rem, 10vw, 8rem);
+  font-weight: 900;
   color: #fff;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
   letter-spacing: 0.1em;
-  line-height: 1;
+  line-height: 1.1;
+  white-space: nowrap;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-.barTrack {
-  width: 200px;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.15);
-  overflow: hidden;
-}
-
-.barFill {
-  height: 100%;
-  width: 100%;
-  background: #E84420;
-  transform: scaleX(0);
-  transform-origin: left;
-  will-change: transform;
-}
-
-/* Title */
-.title {
-  position: absolute;
-  color: #fff;
-  font-size: clamp(1.8rem, 5vw, 3.5rem);
-  font-weight: 900;
-  letter-spacing: 0.15em;
-  opacity: 0;
-  will-change: transform, opacity;
-  z-index: 2;
-}
-
-.titleEn {
-  position: absolute;
-  color: #E84420;
-  font-size: clamp(4rem, 12vw, 10rem);
-  font-weight: 900;
-  letter-spacing: 0.05em;
-  opacity: 0;
+.titleSub {
+  font-size: clamp(0.6rem, 1.5vw, 0.9rem);
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.5em;
   font-family: 'Helvetica Neue', Arial, sans-serif;
-  z-index: 1;
-  user-select: none;
-}
-
-/* Catchcopy */
-.catchWrapper {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  z-index: 2;
-}
-
-.catchcopy {
-  color: #fff;
-  font-size: clamp(0.85rem, 2vw, 1.3rem);
-  letter-spacing: 0.4em;
   font-weight: 300;
-  opacity: 0;
+  margin-top: 12px;
   white-space: nowrap;
 }
-
-.catchLine {
-  width: 60px;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.5);
-  will-change: transform;
-}
-.catchLineLeft { transform-origin: right; }
-.catchLineRight { transform-origin: left; }
