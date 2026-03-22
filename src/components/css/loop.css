@@ -1,0 +1,23 @@
+.marquee-container {
+  overflow: hidden; /* 枠外を隠す */
+  white-space: nowrap; /* 改行を防ぐ */
+  width: 100%;
+  background: #f0f0f0;
+  padding: 10px 0;
+}
+
+.marquee-content {
+  display: inline-block;
+  animation: scroll 20s linear infinite; /* 一定速度(linear)で無限ループ */
+}
+
+.marquee-content span {
+  margin: 0 20px;
+  font-weight: bold;
+}
+
+/* 始点から終点までスライドさせる */
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); } /* 半分まで行ったら最初に戻る */
+}

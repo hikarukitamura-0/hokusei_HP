@@ -1,0 +1,27 @@
+.navlink{
+    text-decoration: none;
+    color: white;
+    transition: color 0.2s ease;
+}
+
+.navlink-wrapper:hover .underline {
+    /* 💡 ホバーしたら表示 */
+    transition: opacity 0.2s ease-in-out;
+    opacity: 1;
+}
+
+.navlink:hover{
+    color: rgb(255, 208, 0);
+}
+.underline{
+    opacity: 0;
+}
+
+.logo:hover{
+    transition: filter 0.2s ease;
+    filter: brightness(0.8);
+}
+.logo.scrolled{
+    transition: all 0.4s ease;
+    height: 40px;
+}

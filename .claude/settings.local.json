@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:recruit.buysell-technologies.com)",
+      "WebFetch(domain:sankoudesign.com)",
+      "WebFetch(domain:webdesignclip.com)",
+      "WebFetch(domain:pa-tu.work)",
+      "WebFetch(domain:ryo-sukeblog.net)",
+      "WebFetch(domain:note.com)",
+      "Bash(npm install gsap)",
+      "Bash(npx tsc --noEmit)",
+      "Bash(npx vite build)",
+      "WebFetch(domain:j-security.jp)",
+      "WebFetch(domain:www.j-security.co.jp)",
+      "Bash(npm install @mui/icons-material)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
+    ]
+  }
+}
