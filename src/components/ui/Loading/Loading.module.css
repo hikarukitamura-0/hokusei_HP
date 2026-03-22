@@ -1,118 +1,71 @@
-.overlay {
+.wrapper {
   position: fixed;
   inset: 0;
-  background-color: #1a1a1a;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   z-index: 10000;
-  overflow: hidden;
-  will-change: transform;
+  pointer-events: none;
 }
+
+.curtainTop,
+.curtainBottom {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: #1a1a1a;
+  will-change: transform;
+  z-index: 1;
+}
+.curtainTop { top: 0; }
+.curtainBottom { bottom: 0; }
 
 .flash {
   position: absolute;
   inset: 0;
   background: #fff;
   opacity: 0;
-  z-index: 10;
+  z-index: 5;
   pointer-events: none;
 }
 
-/* Diagonal slashes */
-.slash {
+.line {
   position: absolute;
-  width: 120%;
-  height: 60px;
-  background: #E84420;
-  opacity: 0.7;
-  will-change: transform;
-}
-.slash1 { top: 20%; }
-.slash2 { top: 50%; height: 40px; opacity: 0.4; }
-.slash3 { top: 75%; height: 25px; opacity: 0.3; }
-
-/* Counter */
-.counterWrapper {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-
-.counter {
-  font-size: clamp(4rem, 10vw, 7rem);
-  font-weight: 100;
-  color: #fff;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  letter-spacing: 0.1em;
-  line-height: 1;
-}
-
-.barTrack {
-  width: 200px;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.15);
-  overflow: hidden;
-}
-
-.barFill {
-  height: 100%;
+  top: 50%;
+  left: 0;
   width: 100%;
-  background: #E84420;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #E84420, #4da6d9, transparent);
   transform: scaleX(0);
-  transform-origin: left;
+  z-index: 4;
   will-change: transform;
 }
 
-/* Title */
 .title {
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   color: #fff;
-  font-size: clamp(1.8rem, 5vw, 3.5rem);
+  font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 900;
   letter-spacing: 0.15em;
+  white-space: nowrap;
+  z-index: 3;
   opacity: 0;
   will-change: transform, opacity;
-  z-index: 2;
 }
 
 .titleEn {
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   color: #E84420;
-  font-size: clamp(4rem, 12vw, 10rem);
+  font-size: clamp(5rem, 14vw, 12rem);
   font-weight: 900;
   letter-spacing: 0.05em;
-  opacity: 0;
   font-family: 'Helvetica Neue', Arial, sans-serif;
-  z-index: 1;
-  user-select: none;
-}
-
-/* Catchcopy */
-.catchWrapper {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  gap: 20px;
   z-index: 2;
-}
-
-.catchcopy {
-  color: #fff;
-  font-size: clamp(0.85rem, 2vw, 1.3rem);
-  letter-spacing: 0.4em;
-  font-weight: 300;
   opacity: 0;
+  user-select: none;
   white-space: nowrap;
 }
-
-.catchLine {
-  width: 60px;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.5);
-  will-change: transform;
-}
-.catchLineLeft { transform-origin: right; }
-.catchLineRight { transform-origin: left; }
